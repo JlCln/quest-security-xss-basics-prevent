@@ -26,12 +26,8 @@
                 And do you even have a proper travel token, for a start?
             </p>
 
-            <!-- XSS vulnerability
-
-                    Hack hint: typing <script>alert(1)</script> in the input field won't work, but
-                    typing something like <img src=" " onerror="alert(1)"> will! -->
-
-            <input class="text-center" placeholder="Answer here." id="token-question" style="margin-bottom: 1%;">
+                    <input class="form-control" placeholder="Answer here." id="token-question" style="margin-bottom: 1%;">
+                    <button class="btn btn-primary btn-sm" type="submit" style="margin-top: 1%; margin-bottom: 1%;" onclick="submitAnswer()">Submit</button>
 
             <p><strong>You:</strong> Well, about my ticket... I <span id="token-answer"
                     style="color: #f0c419"></span>...</p>
@@ -40,16 +36,11 @@
     </div>
 
     <script>
-
-        const input = document.getElementById("token-question");
-        const log = document.getElementById("token-answer");
-
-        input.addEventListener("input", updateValue);
-
-        function updateValue(e) {
-            log.innerHTML = e.target.value;
+        function submitAnswer() {
+            const input = document.getElementById('token-question').value;
+            const answerElement = document.getElementById('token-answer');
+            answerElement.textContent = input;
         }
-
     </script>
 
 </body>
